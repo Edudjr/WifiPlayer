@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title><%=title%></title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="stylesheets/grayscale.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <i class="fa fa-play-circle"></i>  <span class="light">Wifi</span> Player
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">Music</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">Wifi Player</h1>
+                        <p class="intro-text">Listen to music anywhere in the house, enjoy :)</p>
+                        <div class="player">
+                            <div class="button" id="buttonPlay"><i class="fa fa-play fa-6"></i></div>
+                            <div class="button" id="buttonPause" ><i class="fa fa-pause fa-6"></i></div>
+                            <div class="button" id="buttonStop" ><i class="fa fa-stop fa-6"></i></div>
+                        </div>
+                         <div class="player">
+                            <div class="buttonList" id="buttonBackward"><i class="fa fa-backward fa-6"></i></div>
+                            <div class="buttonList" id="buttonForward" ><i class="fa fa-forward fa-6"></i>
+                            </div>
+                        </div>
+                        <div class="player list">
+                            <div class="buttonList" id="buttonPlaying">Playing Now</div>
+                            <div class="buttonList" id="buttonSelect">Select Music</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- SNIPPET -->
+    <div class="container">
+		<div class="row">
+			<div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]" id="list_playing">
+				<ul class="event-list">
+
+                    <!-- ITEMS -->
+                    <% for(var i=0; i<files.length; i++) {%>
+                        <li class="li_playing">
+                            <time>
+                                <span class="day"><i class="fa fa-play fa-6"></i></span>
+                                <span class="month">Play</span>
+                            </time>
+                            <div class="info">
+                                <h2 class="title"><%=files[i].title%></h2>
+                                <p class="desc"><%=files[i].song%></p>
+                            </div>
+                            <div class="social">
+                                <ul>
+                                    <li class="facebook" style="width:33%;"><i class="fa fa-times fa-2"></i></li>
+                                </ul>
+                            </div>
+                        </li>
+                    <% } %>
+
+				</ul>
+			</div>
+            <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]" id="list_select">
+                LUCAS VIADAO :B
+            </div>
+		</div>
+	</div>
+
+
+    <!-- jQuery -->
+    <script src="javascripts/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="javascripts/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="javascripts/jquery.easing.min.js"></script>
+
+    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="javascripts/grayscale.js"></script>
+
+    <script>
+
+    //Hide playlists
+    $("#list_playing").hide();
+    $("#list_select").hide();
+
+    $("#buttonPlay").click(function() {
+        $.get( "/play", function( data ) {
+            //$( ".result" ).html( data );
+        });
+    });
+
+    $("#buttonPause").click(function() {
+        $.get( "/pause", function( data ) {
+            //$( ".result" ).html( data );
+        });
+    });
+
+    $("#buttonStop").click(function() {
+        $.get( "/stop", function( data ) {
+            //$( ".result" ).html( data );
+        });
+    });
+
+    $("#buttonBackward").click(function() {
+        $.get( "/backward", function( data ) {
+            //$( ".result" ).html( data );
+        });
+    });
+
+    $("#buttonForward").click(function() {
+        $.get( "/Forward", function( data ) {
+            //$( ".result" ).html( data );
+        });
+    });
+
+    $("#buttonPlaying").click(function() {
+        $("#list_playing").show(400);
+        $("#list_select").hide(400);
+    });
+    $("#buttonSelect").click(function() {
+        $("#list_select").show(400);
+        $("#list_playing").hide(400);
+    });
+
+    $(".button").click(function(){
+        clearStates();
+        $(this).addClass( "active_button" );
+    });
+
+    //Function to retrieve current state from player
+    var lastState = null;
+    var currentMusic = null;
+    var lastMusic = null;
+
+    function getState(){
+        $.getJSON("/state", function(data){
+            //Update state (playing, paused, stopped)
+            if (data.state!=lastState) {
+                lastState = parseInt(data.state);
+
+                switch(lastState){
+                    case 0:
+                        clearStates();
+                        $("#buttonPlay").addClass("active_button");
+                        break;
+                    case 1:
+                        clearStates();
+                        $("#buttonPause").addClass("active_button");
+                        break;
+                    case 2:
+                        clearStates();
+                        $("#buttonStop").addClass("active_button");
+                        break;
+                }
+                //Update music
+            }
+
+            if(data.song_index != currentMusic){
+                console.log(data.song_index);
+                currentMusic = parseInt(data.song_index);
+
+                //slidedown last music if not null
+                if(lastMusic != null)
+                    $("li time").eq(lastMusic).slideDown();
+                
+                $("li time").eq(currentMusic).slideUp();
+                lastMusic = currentMusic;
+            }
+            
+        });
+    }
+
+    $('.buttonList').on('touchstart', function () {
+      $(this).css('color', '#555555');
+    });
+
+    $('.buttonList').on('touchend', function () {
+      $(this).css('color', '#ffffff');
+    });
+
+    function clearStates(){
+        $(".button").removeClass("active_button");
+    }
+
+    //Refresh every second to get current state
+    getState();
+    setInterval(function(){
+        getState(); // this will run after every 5 seconds
+    }, 1000);
+
+    //get music index and play
+    $("li time").click(function(){
+        var index = $(this).parents("li").index();
+        var url = '/play?i=' + index; 
+        $.get(url, function(data){
+            //ok
+        });
+    });
+
+    //Filter
+    function listFilter(header, list){
+
+    }
+
+    </script>
+
+</body>
+
+</html>
