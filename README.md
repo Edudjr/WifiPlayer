@@ -8,3 +8,4 @@ The project consist in Nodejs application (from this git) running in a Raspberry
 * Create list to pick the music from
 * Create shared folders
 * Make it pause/stop immediately
+* Add volume functionality

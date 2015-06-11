@@ -96,9 +96,8 @@
     <!-- SNIPPET -->
     <div class="container">
 		<div class="row">
-			<div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]" id="list_playing">
+			<div id="list_playing" class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]" >
 				<ul class="event-list">
-
                     <!-- ITEMS -->
                     <% for(var i=0; i<files.length; i++) {%>
                         <li class="li_playing">
@@ -120,8 +119,23 @@
 
 				</ul>
 			</div>
-            <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]" id="list_select">
-                LUCAS VIADAO :B
+            <div id="list_select" class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]" >
+                <ul class="event-list">
+                    <!-- ITEMS -->
+                    <% for(var i=0; i<files.length; i++) {%>
+                        <li class="li_list">
+                            <time>
+                                <span class="day"><i class="fa fa-plus fa-6"></i></span>
+                                <span class="month">Add</span>
+                            </time>
+                            <div class="info">
+                                <h2 class="title"><%=files[i].title%></h2>
+                                <p class="desc"><%=files[i].song%></p>
+                            </div>
+                        </li>
+                    <% } %>
+
+                </ul> 
             </div>
 		</div>
 	</div>

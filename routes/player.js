@@ -70,6 +70,7 @@
         var tempTitle = "";
         var tempSong = "";
         
+        //if regex worked, get title and song names
         if (tempNoPath != null){
             var tempFinal = tempNoPath[0].match(/^([^-]+) - (.*).mp3/i);
             if(tempFinal != null && tempFinal[1] && tempFinal[2]){

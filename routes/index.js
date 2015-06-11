@@ -16,12 +16,14 @@ router.get('/', function(req, res, next) {
 	  // If the `nonull` option is set, and nothing 
 	  // was found, then files is ["**/*.js"] 
 	  // er is an error object or null.
+	  
 	  files.forEach(function(item){
 	  	player.addToPlaylist(item);
 	  	data.files.push(player.getMetadata(item));
 	  });
-	  //data.files = files;
 
+	  //data.files = files;
+	  //rende HTML and send info from files
 	  res.render('index', data);
 	});
 	
