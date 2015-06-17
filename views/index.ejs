@@ -99,15 +99,15 @@
 			<div id="list_playing" class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]" >
 				<ul class="event-list">
                     <!-- ITEMS -->
-                    <% for(var i=0; i<files.length; i++) {%>
+                    <% for(var i=0; i<playing.length; i++) {%>
                         <li class="li_playing">
-                            <time>
+                            <play>
                                 <span class="day"><i class="fa fa-play fa-6"></i></span>
                                 <span class="month">Play</span>
-                            </time>
+                            </play>
                             <div class="info">
-                                <h2 class="title"><%=files[i].title%></h2>
-                                <p class="desc"><%=files[i].song%></p>
+                                <h2 class="title"><%=playing[i].title%></h2>
+                                <p class="desc"><%=playing[i].song%></p>
                             </div>
                             <div class="social">
                                 <ul>
@@ -124,10 +124,10 @@
                     <!-- ITEMS -->
                     <% for(var i=0; i<files.length; i++) {%>
                         <li class="li_list">
-                            <time>
+                            <add>
                                 <span class="day"><i class="fa fa-plus fa-6"></i></span>
                                 <span class="month">Add</span>
-                            </time>
+                            </add>
                             <div class="info">
                                 <h2 class="title"><%=files[i].title%></h2>
                                 <p class="desc"><%=files[i].song%></p>
@@ -195,6 +195,9 @@
     $("#buttonPlaying").click(function() {
         $("#list_playing").show(400);
         $("#list_select").hide(400);
+        $.get('/update', function(data){
+           // alert("ok");
+        });
     });
     $("#buttonSelect").click(function() {
         $("#list_select").show(400);
@@ -240,9 +243,9 @@
 
                 //slidedown last music if not null
                 if(lastMusic != null)
-                    $("li time").eq(lastMusic).slideDown();
+                    $("li play").eq(lastMusic).slideDown();
                 
-                $("li time").eq(currentMusic).slideUp();
+                $("li play").eq(currentMusic).slideUp();
                 lastMusic = currentMusic;
             }
             
@@ -264,15 +267,26 @@
     //Refresh every second to get current state
     getState();
     setInterval(function(){
-        getState(); // this will run after every 5 seconds
+        getState(); // this will run after every 1 second
     }, 1000);
 
     //get music index and play
-    $("li time").click(function(){
+    $("li play").click(function(){
         var index = $(this).parents("li").index();
         var url = '/play?i=' + index; 
         $.get(url, function(data){
             //ok
+        });
+    });
+
+    //get music index and play
+    $("li add").click(function(){
+        var index = $(this).parents("li").index();
+        //alert(index);
+        var url = '/add?i=' + index; 
+        $.get(url, function(data){
+            
+            //alert("ok");
         });
     });
 

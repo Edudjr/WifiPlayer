@@ -393,7 +393,8 @@ body {
         padding: 0px;
         margin: 0px 0px 20px;
     }
-    .event-list > li > time {
+    .event-list > li > play,
+    .event-list > li > add {
         display: inline-block;
         width: 100%;
         color: rgb(255, 255, 255);
@@ -402,19 +403,23 @@ body {
         text-align: center;
         text-transform: uppercase;
     }
-    .event-list > li:nth-child(even) > time {
+    .event-list > li:nth-child(even) > play,
+    .event-list > li:nth-child(even) > add {
         background-color: rgb(165, 82, 167);
     }
-    .event-list > li > time > span {
+    .event-list > li > play > span,
+    .event-list > li > add > span {
         display: none;
     }
-    .event-list > li > time > .day {
+    .event-list > li > play > .day,
+    .event-list > li > add > .day {
         display: block;
         font-size: 30pt;
         font-weight: 100;
         line-height: 2;
     }
-    .event-list > li time > .month {
+    .event-list > li play > .month,
+    .event-list > li add > .month {
         display: block;
         font-size: 24pt;
         font-weight: 900;
@@ -481,6 +486,9 @@ body {
         color: rgb(30, 30, 30);
         background-color: rgb(200, 200, 200);
     }
+
+    .event-list > 
+
     .facebook a,
     .twitter a,
     .google-plus a {
@@ -515,15 +523,18 @@ body {
         height: 120px;
         padding: 0px;
     }
-    .event-list > li > time{
+    .event-list > li > play, 
+    .event-list > li > add {
         cursor: pointer;
     }
-    .event-list > li > time,
-    .event-list > li > img  {
+    .event-list > li > play,
+    .event-list > li > img,
+    .event-list > li > add {
         display: inline-block;
     }
-    .event-list > li > time,
-    .event-list > li > img {
+    .event-list > li > play,
+    .event-list > li > img,
+    .event-list > li > add {
         width: 120px;
         float: left;
     }
@@ -531,8 +542,9 @@ body {
         background-color: rgb(245, 245, 245);
         overflow: hidden;
     }
-    .event-list > li > time,
-    .event-list > li > img {
+    .event-list > li > play,
+    .event-list > li > img,
+    .event-list > li > add {
         width: 120px;
         height: 120px;
         padding: 0px;

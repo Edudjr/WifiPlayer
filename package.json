@@ -15,5 +15,18 @@
     "morgan": "~1.5.1",
     "serve-favicon": "~2.2.0",
     "speaker": "^0.2.5"
-  }
+  },
+  "description": "Project for a WifiPlayer using a Raspberry Pi",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Edudjr/WifiPlayer.git"
+  },
+  "author": "Eduardo Domene Junior",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Edudjr/WifiPlayer/issues"
+  },
+  "homepage": "https://github.com/Edudjr/WifiPlayer"
 }
