@@ -97,27 +97,7 @@
     <div class="container">
 		<div class="row">
 			<div id="list_playing" class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]" >
-				<ul class="event-list">
-                    <!-- ITEMS -->
-                    <% for(var i=0; i<playing.length; i++) {%>
-                        <li class="li_playing">
-                            <play>
-                                <span class="day"><i class="fa fa-play fa-6"></i></span>
-                                <span class="month">Play</span>
-                            </play>
-                            <div class="info">
-                                <h2 class="title"><%=playing[i].title%></h2>
-                                <p class="desc"><%=playing[i].song%></p>
-                            </div>
-                            <div class="social">
-                                <ul>
-                                    <li class="facebook" style="width:33%;"><i class="fa fa-times fa-2"></i></li>
-                                </ul>
-                            </div>
-                        </li>
-                    <% } %>
-
-				</ul>
+				
 			</div>
             <div id="list_select" class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]" >
                 <ul class="event-list">
@@ -196,6 +176,8 @@
         $("#list_playing").show(400);
         $("#list_select").hide(400);
         $.get('/update', function(data){
+           insertToList(data);
+           //console.log(data);
            // alert("ok");
         });
     });
@@ -288,11 +270,34 @@
             
             //alert("ok");
         });
+        var element = $(this).find("i");
+        element.hide(200);
+        setTimeout(function(){
+            element.show(200);
+        },200);
     });
 
-    //Filter
-    function listFilter(header, list){
+    //insert data to list. Display to user
+    function insertToList(array){
+        items = [];
+        for(var i=0; i<array.length; i++){
+            items.push(
+                "<li class=\"li_playing\">"
+                        +"<play><span class=\"day\"><i class=\"fa fa-play fa-6\"></i></span><span class=\"month\">Play</span></play>"
+                        +"<div class=\"info\">"
+                            +"<h2 class=\"title\">"  + array[i].title + "</h2>"
+                            +"<p class=\"desc\">" + array[i].song + "</p>"
+                        +"</div><div class=\"social\"><ul><li class=\"facebook\" style=\"width:33%;\"><i class=\"fa fa-times fa-2\"></i></li>"
+                            +"</ul></div></li>"
+                );
+        }
 
+        html = "<ul class=\"event-list\">"
+                     +"<!-- ITEMS -->"
+                     +items.join("");
+                +"</ul>";
+
+        $("#list_playing").html(html);
     }
 
     </script>

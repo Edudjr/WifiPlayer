@@ -13,7 +13,8 @@ router.get('/', function(req, res, next) {
 	data.files = [];
 	data.playing = musicPlaying;
 
-	glob("/Users/Eduardo/Music/*.mp3", {mark: true}, function (er, files) {
+	//Change here to fit your playlist folder
+	glob("~/Users/Eduardo/Music/*.mp3", {mark: true}, function (er, files) {
 	  // files is an array of filenames. 
 	  // If the `nonull` option is set, and nothing 
 	  // was found, then files is ["**/*.js"] 
@@ -64,10 +65,7 @@ router.get('/add', function(req, res){
 });
 
 router.get('/update', function(req, res){
-	new EJS
-	({
-	    url : 'http://' + host + '/'
-	}).update(list_playing, { data : musicPlaying });
+	res.status(200).send(musicPlaying);
 });
 
 router.get('/play',function(req, res){
