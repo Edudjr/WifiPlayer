@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 	data.playing = musicPlaying;
 
 	//Change here to fit your playlist folder
-	glob("~/Users/Eduardo/Music/*.mp3", {mark: true}, function (er, files) {
+	glob("../../Users/Eduardo/Music/*.mp3", {mark: true}, function (er, files) {
 	  // files is an array of filenames. 
 	  // If the `nonull` option is set, and nothing 
 	  // was found, then files is ["**/*.js"] 
