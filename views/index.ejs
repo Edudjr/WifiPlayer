@@ -137,7 +137,7 @@
     <script src="javascripts/grayscale.js"></script>
 
     <script>
-
+	
     //Hide playlists
     $("#list_playing").hide();
     $("#list_select").hide();
@@ -253,7 +253,7 @@
     }, 1000);
 
     //get music index and play
-    $("li play").click(function(){
+    $("li play").on("click", "li.play", function(){
         var index = $(this).parents("li").index();
         var url = '/play?i=' + index; 
         $.get(url, function(data){
@@ -283,7 +283,7 @@
         for(var i=0; i<array.length; i++){
             items.push(
                 "<li class=\"li_playing\">"
-                        +"<play><span class=\"day\"><i class=\"fa fa-play fa-6\"></i></span><span class=\"month\">Play</span></play>"
+                        +"<play onClick=\"PlayClick(" + i + ")\"><span class=\"day\"><i class=\"fa fa-play fa-6\"></i></span><span class=\"month\">Play</span></play>"
                         +"<div class=\"info\">"
                             +"<h2 class=\"title\">"  + array[i].title + "</h2>"
                             +"<p class=\"desc\">" + array[i].song + "</p>"
@@ -299,6 +299,14 @@
 
         $("#list_playing").html(html);
     }
+
+	function PlayClick(index){
+		//var index = $(this).parents("li").index();
+		var url = '/play?i=' + index; 
+		$.get(url, function(data){
+        	    //ok
+	        });
+	}
 
     </script>
 
