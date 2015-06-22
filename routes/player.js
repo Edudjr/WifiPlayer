@@ -18,6 +18,8 @@
     var currentState = STATE.stopped;
     var playlist = [];   
     
+    //static lame and speaker
+    var decoder = new lame.Decoder;
 
     exports.play = function(index){
         playH(index);
@@ -115,7 +117,7 @@
     
     	// manually write data to the decoder stream, which is a writeable stream
     	//stream = fs.createReadStream(file).pipe(new lame.Decoder).pipe(new Speaker());
-    	stream = fs.createReadStream(file).pipe(new lame.Decoder);
+    	stream = fs.createReadStream(file).pipe(decoder);
     
     	//pipe to speaker
     	stream.pipe(new Speaker());
