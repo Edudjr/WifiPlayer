@@ -68,6 +68,12 @@ router.get('/update', function(req, res){
 	res.status(200).send(musicPlaying);
 });
 
+router.get('/delete', function(req, res){
+	var index = req.query.i;
+	player.play(index);
+	res.status(200).send();
+});
+
 router.get('/play',function(req, res){
 	var index = req.query.i;
 	player.play(index);
