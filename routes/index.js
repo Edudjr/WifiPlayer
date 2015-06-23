@@ -37,6 +37,9 @@ router.get('/state', function(req, res){
 	data.state = player.getState().toString();
 	data.song_index = null;
 	
+	//get size of playlist
+	data.playlistSize = musicPlaying.length;
+	//get index
 	var index = player.getSongIndex();
 	if(index != null)
 		data.song_index = index.toString();
@@ -70,7 +73,8 @@ router.get('/update', function(req, res){
 
 router.get('/delete', function(req, res){
 	var index = req.query.i;
-	player.play(index);
+	player.delete(index);
+	musicPlaying.splice(index,1);
 	res.status(200).send();
 });
 

@@ -195,6 +195,7 @@
     var lastState = null;
     var currentMusic = null;
     var lastMusic = null;
+    var listSize = 0;
 
     function getState(){
         $.getJSON("/state", function(data){
@@ -231,6 +232,12 @@
                 lastMusic = currentMusic;
             }
             
+		if(listSize != data.playlistSize){
+			$.get('/update', function(data){
+				insertToList(data);
+			});
+			listSize = data.playlistSize;
+		}
         });
     }
 
@@ -304,6 +311,7 @@
 	function PlayClick(index){
 		//var index = $(this).parents("li").index();
 		var url = '/play?i=' + index; 
+		console.log("play");
 		$.get(url, function(data){
         	    //ok
 	        });
@@ -311,7 +319,8 @@
 
     function Delete(index){
         var url = '/delete?i=' + index;
-        $.get(url, function(data){
+        console.log("delete");
+	$.get(url, function(data){
             //ok
         });
     }

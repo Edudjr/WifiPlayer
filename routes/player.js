@@ -22,10 +22,13 @@
     var spkr = new Speaker();
 
     exports.addToPlaylist = function(file){
-        playlist.push(file);
+	playlist.push(file);
     }
     exports.delete = function(index){
-        playlist.splice(index,1);
+	playlist.splice(index,1);
+	if(index == lastMusic){
+		playH(index);
+	}
     }
     exports.play = function(index){
         playH(index);
