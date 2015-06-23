@@ -21,6 +21,12 @@
     //static lame and speaker
     var spkr = new Speaker();
 
+    exports.addToPlaylist = function(file){
+        playlist.push(file);
+    }
+    exports.delete = function(index){
+        playlist.splice(index,1);
+    }
     exports.play = function(index){
         playH(index);
     }
@@ -164,8 +170,4 @@
     function previous(){
         if(currentIndex > 0)
             currentIndex --;
-    }
-
-    exports.addToPlaylist = function(file){
-        playlist.push(file);
     }
