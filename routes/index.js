@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 	data.playing = musicPlaying;
 
 	//Change here to fit your playlist folder
-	glob("../../Users/Eduardo/Music/*.mp3", {mark: true}, function (er, files) {
+	glob("/home/eduardo/Downloads/*.mp3", {mark: true}, function (er, files) {
 	  // files is an array of filenames. 
 	  // If the `nonull` option is set, and nothing 
 	  // was found, then files is ["**/*.js"] 
@@ -46,11 +46,12 @@ router.get('/state', function(req, res){
 router.get('/listmusic', function(req, res){
 	
 	// options is optional 
-	glob("/Users/Eduardo/Music/*.mp3", {mark: true}, function (er, files) {
+	glob("/home/eduardo/Downloads/*.mp3", {mark: true}, function (er, files) {
 	  // files is an array of filenames. 
 	  // If the `nonull` option is set, and nothing 
 	  // was found, then files is ["**/*.js"] 
 	  // er is an error object or null.
+	  console.log("AQUI"+files);
 	  res.send(files);
 	});
 });
